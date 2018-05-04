@@ -1,6 +1,6 @@
 # btcbox.client
 
-[![PyPI version](https://badge.fury.io/py/btcbox.client.svg)](https://badge.fury.io/py/btcbox.client)
+[![PyPI version](https://badge.fury.io/py/btcbox.client.svg)](https://badge.fury.io/py/btcbox.client)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 btcbox.client is a python client library for btcbox api
 

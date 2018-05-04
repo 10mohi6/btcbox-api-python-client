@@ -12,7 +12,7 @@ if os.path.exists('README.txt'):
 
 setup(
     name  = 'btcbox.client',
-    version = '0.1.0',
+    version = '0.1.1',
     description = 'btcbox.client is a python client library for btcbox api.',
     long_description = long_description,
     license = 'MIT',

@@ -23,8 +23,8 @@ class Clinet(object):
 			raise ClientError('private key is absent.')
 		self.private_key = private_key
 
-	def _request(self, uri, method='GET', headers=None, params=None):
-		uri = '{0}{1}'.format(self.origin, uri)
+	def _request(self, path, method='GET', headers=None, params=None):
+		uri = '{0}{1}'.format(self.origin, path)
 		if method == 'GET':
 			res = requests.get(uri, headers=headers, params=params)
 		elif method == 'POST':
@@ -48,56 +48,56 @@ class Clinet(object):
 		return sign
 
 	def ticker(self, **kwargs):
-		uri = '/api/v1/ticker'
+		path = '/api/v1/ticker'
 		params = OrderedDict()
 		params['coin'] = kwargs.get('coin', 'btc')
 
-		data = self._request(uri, params=params)
+		data = self._request(path, params=params)
 
 		return data
 
 	def depth(self):
-		uri = '/api/v1/depth'
+		path = '/api/v1/depth'
 		params = None
 
-		data = self._request(uri, params=params)
+		data = self._request(path, params=params)
 
 		return data
 
 	def orders(self):
-		uri = '/api/v1/orders'
+		path = '/api/v1/orders'
 		params = None
 
-		data = self._request(uri, params=params)
+		data = self._request(path, params=params)
 
 		return data
 
 	def balance(self, **kwargs):
-		uri = '/api/v1/balance'
+		path = '/api/v1/balance'
 		params = OrderedDict()
 		params['key'] = self.public_key
 		params['coin'] = kwargs.get('coin', 'btc')
 		params['nonce'] = time.time()
 		params['signature'] = self._signature(params)
 
-		data = self._request(uri, method='POST', params=params)
+		data = self._request(path, method='POST', params=params)
 
 		return data
 	
 	def wallet(self, **kwargs):
-		uri = '/api/v1/wallet'
+		path = '/api/v1/wallet'
 		params = OrderedDict()
 		params['coin'] = kwargs.get('coin', 'btc')
 		params['key'] = self.public_key
 		params['nonce'] = time.time()
 		params['signature'] = self._signature(params)
 
-		data = self._request(uri, method='POST', params=params)
+		data = self._request(path, method='POST', params=params)
 
 		return data
 
 	def trade_list(self, **kwargs):
-		uri = '/api/v1/trade_list'
+		path = '/api/v1/trade_list'
 		params = OrderedDict()
 		params['coin'] = kwargs.get('coin', 'btc')
 		params['key'] = self.public_key
@@ -109,12 +109,12 @@ class Clinet(object):
 		params['type'] = type
 		params['signature'] = self._signature(params)
 
-		data = self._request(uri, method='POST', params=params)
+		data = self._request(path, method='POST', params=params)
 
 		return data
 
 	def trade_view(self, **kwargs):
-		uri = '/api/v1/trade_view'
+		path = '/api/v1/trade_view'
 		params = OrderedDict()
 		params['coin'] = kwargs.get('coin', 'btc')
 		params['key'] = self.public_key
@@ -125,12 +125,12 @@ class Clinet(object):
 		params['id'] = id
 		params['signature'] = self._signature(params)
 
-		data = self._request(uri, method='POST', params=params)
+		data = self._request(path, method='POST', params=params)
 
 		return data
 
 	def trade_cancel(self, **kwargs):
-		uri = '/api/v1/trade_cancel'
+		path = '/api/v1/trade_cancel'
 		params = OrderedDict()
 		params['coin'] = kwargs.get('coin', 'btc')
 		params['key'] = self.public_key
@@ -141,12 +141,12 @@ class Clinet(object):
 		params['id'] = id
 		params['signature'] = self._signature(params)
 
-		data = self._request(uri, method='POST', params=params)
+		data = self._request(path, method='POST', params=params)
 
 		return data
 
 	def trade_add(self, **kwargs):
-		uri = '/api/v1/trade_add'
+		path = '/api/v1/trade_add'
 		params = OrderedDict()
 		params['coin'] = kwargs.get('coin', 'btc')
 		params['key'] = self.public_key
@@ -165,6 +165,6 @@ class Clinet(object):
 		params['type'] = type
 		params['signature'] = self._signature(params)
 
-		data = self._request(uri, method='POST', params=params)
+		data = self._request(path, method='POST', params=params)
 
 		return data
