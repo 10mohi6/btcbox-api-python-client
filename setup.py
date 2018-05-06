@@ -6,14 +6,14 @@ except ImportError:
     print("Please install setuptools.")
 
 import os
-long_description = 'btcbox.client is a python client library for btcbox api.'
+long_description = 'btcbox-client is a python client (sync/async) library for btcbox api.'
 if os.path.exists('README.txt'):
     long_description = open('README.txt').read()
 
 setup(
-    name  = 'btcbox.client',
-    version = '0.1.1',
-    description = 'btcbox.client is a python client library for btcbox api.',
+    name  = 'btcbox-client',
+    version = '0.1.0',
+    description = 'btcbox-client is a python client (sync/async) library for btcbox api.',
     long_description = long_description,
     license = 'MIT',
     author = '10mohi6',
@@ -21,7 +21,7 @@ setup(
     url = 'https://github.com/10mohi6/btcbox-api-python-client',
     keywords = 'btcbox',
     packages = find_packages(),
-    install_requires = ['requests'],
+    install_requires = ['grequests'],
     classifiers = [
       'Development Status :: 5 - Production/Stable',
       'Programming Language :: Python :: 3.6',
