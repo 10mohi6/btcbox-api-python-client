@@ -16,7 +16,7 @@ btcbox-client is a python client (sync/async) library for btcbox api
 #
 from btcbox_client.sync import Client
 
-client = Clinet(public_key='your public key', private_key='your private key')
+client = Client(public_key='your public key', private_key='your private key')
 response = client.ticker()
 print(response.status_code, response.json())
 
